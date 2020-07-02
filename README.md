@@ -76,5 +76,5 @@ Pour livrer votre travail :
 
 #### Lien vers votre CodeSandbox
 ```
-URL : <Renseignez ici le lien vers votre projet CodeSandbox>
+URL : https://codesandbox.io/s/fancy-cdn-2bett
 ```

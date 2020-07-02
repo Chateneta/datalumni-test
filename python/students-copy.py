@@ -12,18 +12,20 @@ def getData(filename):
     return data
 
 def getDegrees(data):
-    degrees=[]
+    degrees={}
     for student in data:
-        if(student['degree'] not in degrees):
-            degrees.append(student['degree']) 
-    return degrees
+        degrees[student['degree']] = "dummy" 
+    return degrees.keys()
 
 def userPerDegrees(degrees,data):
     userPerDegrees={}
     for item in degrees:
-        userPerDegrees[item] = 0
+        userPerDegrees[item] = {}
     for student in data:
-       userPerDegrees[student['degree']] +=1
+        if (student['role'] in userPerDegrees[student['degree']]) :
+            userPerDegrees[student['degree']][student['role']] += 1
+        else :
+            userPerDegrees[student['degree']][student['role']] = 0    
     return userPerDegrees
 
 if __name__ == "__main__":
@@ -37,7 +39,7 @@ if __name__ == "__main__":
     # Les étudiants ont chacun un diplôme qui leur est attribué
     # La variable `degrees` contient la liste des diplômes
     degrees = getDegrees(data)
-    print(f'\nLe fichier contient {degrees} diplômes uniques')
+    print(f'\nLe fichier contient {len(degrees)} diplômes uniques')
 
     # # Donnez, dans un dict, pour chaque diplôme le nombre d'étudiant
     # # par catégorie d'utilisateur (student, alumni, ...)
